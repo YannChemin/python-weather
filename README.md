@@ -30,10 +30,10 @@ async def getweather():
   # declare the client. the measuring unit used defaults to the metric system (celcius, km/h, etc.)
   async with python_weather.Client(unit=python_weather.IMPERIAL) as client:
     # fetch a weather forecast from a city
-    weather = await client.get('New York')
+    weather = await client.get('Lahore')
     
-    # returns the current day's forecast temperature (int)
-    print(weather.current.temperature)
+    # returns the current day's forecast precipitation (int)
+    print(weather.current.precipitation)
     
     # get the weather forecast for a few days
     for forecast in weather.forecasts:
