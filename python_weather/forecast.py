@@ -169,7 +169,7 @@ class CurrentForecast(BaseForecast):
   def __repr__(self) -> str:
     """:class:`str`: The string representation of said object."""
     
-    return f'<CurrentForecast temperature={self.temperature!r} description={self.description!r} kind="{self.kind!r}">'
+    return f'<CurrentForecast precipitation={self.precipitation!r} description={self.description!r} kind="{self.kind!r}">'
   
   @property
   def local_timezone(self) -> timezone:
@@ -218,7 +218,7 @@ class HourlyForecast(BaseForecast):
   def __repr__(self) -> str:
     """:class:`str`: The string representation of this object."""
     
-    return f'<HourlyForecast time={self.time!r} temperature={self.temperature!r} description={self.description!r} kind={self.kind!r}>'
+    return f'<HourlyForecast time={self.time!r} precipitation={self.precipitation!r} description={self.description!r} kind={self.kind!r}>'
   
   @property
   def dew_point(self) -> int:
@@ -268,7 +268,7 @@ class HourlyForecast(BaseForecast):
   
   @property
   def chance_of_hightemp(self) -> int:
-    """:class:`int`: Chances of a high temperature in percent."""
+    """:class:`int`: Chances of a high precipitation in percent."""
     
     return int(self._BaseForecast__inner['chanceofhightemp'])
   
@@ -342,7 +342,7 @@ class DailyForecast(CustomizableBase):
   def __repr__(self) -> str:
     """:class:`str`: The string representation of this object."""
     
-    return f'<DailyForecast date={self.date!r} astronomy={self.astronomy!r} temperature={self.temperature!r}>'
+    return f'<DailyForecast date={self.date!r} astronomy={self.astronomy!r} precipitation={self.precipitation!r}>'
   
   @property
   def astronomy(self) -> Astronomy:
@@ -358,8 +358,8 @@ class DailyForecast(CustomizableBase):
     return date(int(h), int(m), int(d))
   
   @property
-  def lowest_temperature(self) -> int:
-    """:class:`int`: The lowest temperature in either Celcius or Fahrenheit."""
+  def lowest_precipitation(self) -> int:
+    """:class:`int`: The lowest precipitation in either Celcius or Fahrenheit."""
     
     return int(
       self.__inner[
@@ -367,8 +367,8 @@ class DailyForecast(CustomizableBase):
     )
   
   @property
-  def highest_temperature(self) -> int:
-    """:class:`int`: The highest temperature in either Celcius or Fahrenheit."""
+  def highest_precipitation(self) -> int:
+    """:class:`int`: The highest precipitation in either Celcius or Fahrenheit."""
     
     return int(
       self.__inner[
@@ -376,8 +376,8 @@ class DailyForecast(CustomizableBase):
     )
   
   @property
-  def temperature(self) -> int:
-    """:class:`int`: The average temperature in either Celcius or Fahrenheit."""
+  def precipitation(self) -> int:
+    """:class:`int`: The average precipitation in either Celcius or Fahrenheit."""
     
     return int(
       self.__inner[
